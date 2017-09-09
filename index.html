@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pomodoro</title>
+</head>
+
+<body class="grey lighten-5">
+    <div id="app">
+        <div class="container">
+            <!-- Title  -->
+            <header>
+                <h1 class="center-align">POMODORO TIMER</h1>
+            </header>
+            <div class="divider"></div>
+            <!-- Title  -->
+
+
+            <!-- Clock  -->
+            <section class="center-align" v-show="!seen">
+                <div class="row">
+                    <div class="col s4">Time elapsed: {{ count }} seconds</div>
+                    <div class="col s4">Missing time: {{ missingTime.minutes + ":" + missingTime.seconds }} minutes</div>
+                    <div class="col s4">Total time: {{ time / 60 }} minutes</div>
+                </div>
+                <div class="progress">
+                    <div class="determinate" :style="{width: percentage + '%'}"></div>
+                </div>
+            </section>
+            <!-- Clock -->
+
+            <!-- Form -->
+            <form @submit.prevent>
+                <div class="input-form" v-show="seen">
+                    <div class="row">
+                        <div class="col s8 offset-s2">
+                            <span>Time: {{ time }} minutes</span>
+                            <p class="range-field">
+                                <input type="range" min="1" max="60" v-model="time" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 center-align" v-show="seen">
+                    <button class="btn waves-effect waves-light" @click="start()">Start</button>
+                </div>
+                <div class="col s12 center-align" v-show="!seen">
+                    <button class="btn waves-effect waves-light" @click="reset()">Reset</button>
+                </div>
+            </form>
+            <div class="divider"></div>
+            <!-- Form -->
+
+            <!-- Footer -->
+            <footer class="center-align">
+                Coded by <a href="https://github.com/christiandbf" target="_blank">christiandbf</a>
+            </footer>
+            <!-- Footer -->
+        </div>
+    </div>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue@2.4.2/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>
